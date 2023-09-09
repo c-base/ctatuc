@@ -15,7 +15,7 @@
                 "host_server": "localhost",
                 "database_name": "fastapi",
                 "ssl_mode": "prefer",
-                "db_server_port": "5432"
+                "db_server_port": "5432",
             },
             "args": [
                 "main:app",
