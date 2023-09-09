@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ctatuc"
+version = "0.1.0"
+description = "A website showin the status of the main airlock of c-base"
+authors = ["Uwe Kamper <me@uwekamper.de>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.103.1"
+uvicorn = "^0.23.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
