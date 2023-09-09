@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hallo {{ user.preferred_username }}</h1>
+<h1>Hello {{ user.preferred_username }}, c-base is:</h1>
+<div class="value">{{ status.current }}</div>
+<div class="changes">
+    {% for change in status.changes %}
+    <div class="change-entry">
+        at {{ change.when }} status changed from {{ change.from }} to {{ change.to }}.
+    </div>
+    {% endfor %}
+</div>
 <p><a href="/logout/">Logout</a></p>
 <p>
     A "shields-up" or "open" status does not mean that c-base is necessarily open:

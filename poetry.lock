@@ -1,4 +1,15 @@
 [[package]]
+name = "aiomqtt"
+version = "1.2.0"
+description = "The idiomatic asyncio MQTT client, wrapped around paho-mqtt"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+paho-mqtt = ">=1.6.0,<2.0.0"
+
+[[package]]
 name = "annotated-types"
 version = "0.5.0"
 description = "Reusable constraint types to use with typing.Annotated"
@@ -207,6 +218,17 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "paho-mqtt"
+version = "1.6.1"
+description = "MQTT version 5.0/3.1.1 client class"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+proxy = ["PySocks"]
+
+[[package]]
 name = "pycparser"
 version = "2.21"
 description = "C parser in Python"
@@ -313,9 +335,13 @@ standard = ["colorama (>=0.4)", "httptools (>=0.5.0)", "python-dotenv (>=0.13)",
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d8a581fbb14201340c2d32476bbea6a12c208089fa0bc7d7c2cbdf9524d829fd"
+content-hash = "afb6e6065b9a328c6e9151a200aaa7b69b97f4eae059610b9c76d1300426bf31"
 
 [metadata.files]
+aiomqtt = [
+    {file = "aiomqtt-1.2.0-py3-none-any.whl", hash = "sha256:756879c415c3c89a380bec2b283c165d9e7cc581d490cf29f7e85c28ff0494c5"},
+    {file = "aiomqtt-1.2.0.tar.gz", hash = "sha256:aad3da59aa77e12e28144a2fdccd60c840d9c2709fc287894696935974270ca2"},
+]
 annotated-types = [
     {file = "annotated_types-0.5.0-py3-none-any.whl", hash = "sha256:58da39888f92c276ad970249761ebea80ba544b77acddaa1a4d6cf78287d45fd"},
     {file = "annotated_types-0.5.0.tar.gz", hash = "sha256:47cdc3490d9ac1506ce92c7aaa76c579dc3509ff11e098fc867e5130ab7be802"},
@@ -514,6 +540,9 @@ markupsafe = [
     {file = "MarkupSafe-2.1.3-cp39-cp39-win32.whl", hash = "sha256:fec21693218efe39aa7f8599346e90c705afa52c5b31ae019b2e57e8f6542bb2"},
     {file = "MarkupSafe-2.1.3-cp39-cp39-win_amd64.whl", hash = "sha256:3fd4abcb888d15a94f32b75d8fd18ee162ca0c064f35b11134be77050296d6ba"},
     {file = "MarkupSafe-2.1.3.tar.gz", hash = "sha256:af598ed32d6ae86f1b747b82783958b1a4ab8f617b06fe68795c7f026abbdcad"},
+]
+paho-mqtt = [
+    {file = "paho-mqtt-1.6.1.tar.gz", hash = "sha256:2a8291c81623aec00372b5a85558a372c747cbca8e9934dfe218638b8eefc26f"},
 ]
 pycparser = [
     {file = "pycparser-2.21-py2.py3-none-any.whl", hash = "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9"},
