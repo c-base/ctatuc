@@ -1,6 +1,7 @@
 import asyncio
 import json
 import aiomqtt
+from aiomqtt.error import MqttError
 from typing import Annotated
 from datetime import datetime
 from authlib.integrations.starlette_client import OAuth, OAuthError
@@ -47,30 +48,40 @@ door_status = {
 }
 
 MAX_CHANGES = 10
+MQTT_TIMEOUT = 5
 
 class MQTTRunner:
     def __init__(self):
         self.started = False
 
     async def mqtt_loop(self):
-        async with aiomqtt.Client("10.0.1.17") as client:
-            async with client.messages() as messages:
-                await client.subscribe("sensor/c-leuse/status")
-                async for message in messages:
-                    now = datetime.now()
-                    payload = message.payload.decode()
-                    door_status['updated'] = now
-                    if door_status['current'] != payload:
-                        door_status['changes'].append({
-                            'from': door_status['current'],
-                            'to': payload,
-                            'when': now,
-                        })
-                        if len(door_status['changes']) > MAX_CHANGES:
-                            door_status['changes'] = door_status['changes'][:-MAX_CHANGES]
-                    door_status['current'] = payload
-                    
-        return None
+        global door_status
+        try:
+            async with aiomqtt.Client("10.0.1.17", timeout=MQTT_TIMEOUT) as client:
+                async with client.messages() as messages:
+                    await client.subscribe("sensor/c-leuse/status")
+                    async for message in messages:
+                        now = datetime.now()
+                        payload = message.payload.decode()
+                        door_status['updated'] = now
+                        if door_status['current'] != payload:
+                            door_status['changes'].append({
+                                'from': door_status['current'],
+                                'to': payload,
+                                'when': now,
+                            })
+                            if len(door_status['changes']) > MAX_CHANGES:
+                                door_status['changes'] = door_status['changes'][:-MAX_CHANGES]
+                        door_status['current'] = payload
+        except MqttError as error:
+            door_status['changes'].append({
+                'from': door_status['current'],
+                'to': 'unknown',
+                'when': datetime.now(),
+            })
+            door_status['updated'] = datetime.now()
+            door_status['current'] = f"'ERROR: {error}'"
+            await asyncio.sleep(2.0)
 
     async def run_main(self):
         self.started = True

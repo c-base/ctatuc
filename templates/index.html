@@ -2,19 +2,24 @@
 
 {% block content %}
 <h1>Hello {{ user.preferred_username }}, c-base is:</h1>
-<div class="value">{{ status.current }}</div>
+<div class="value{% if status.current == 'open' %} value-open{% endif %}{% if status.current == 'shields_up'%} value-shields-up{% endif %}{% if status.current == 'shutdown'%} value-shutdown{% endif %}">{{ status.current }}</div>
 <div class="changes">
     {% for change in status.changes %}
     <div class="change-entry">
-        at {{ change.when }} status changed from {{ change.from }} to {{ change.to }}.
+        - at {{ change.when }} status changed from {{ change.from }} to {{ change.to }}.
     </div>
     {% endfor %}
 </div>
 <p><a href="/logout/">Logout</a></p>
-<p>
-    A "shields-up" or "open" status does not mean that c-base is necessarily open:
-    <ul>
-        
-    </ul>
-</p>
+<div class="explainer">
+    <p>
+        A "shields-up" or "open" status does not mean that c-base is necessarily open:
+        <ul>
+            <li>Someone might just have opened the space to fetch something and leave right away.</li>
+            <li>The last cey-member might have to leave before you arrive at c-base.</li>
+            <li>Someone might have left the door in the wrong position.</li>
+        </ul>
+        If you want to be sure please call <a href="tel:+493028599300">+4930-285 993 00</a> if you need to be sure.
+    </p>
+</div>
 {% endblock content %}

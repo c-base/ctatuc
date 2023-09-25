@@ -1,9 +1,41 @@
 body {
+    background: #ccc;
     text-align: center;
     font-family: sans-serif;
 }
 
 .value {
-    
+    margin: 10px auto;
+    width: fit-content;
+    padding: 10px;
     font-size: 23px;
+    background: #111;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.value-open {
+    background: #35930d;
+}
+.value-shields-up {
+    background: rgb(170, 170, 0);
+}
+.value-shutdown {
+    background: #8a0000;
+}
+
+.changes {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    background: #333;
+    color: lightgreen;
+    width: 50vw;
+    text-align: left;
+    margin: auto;
+}
+
+.explainer {
+    width: 50vw;
+    text-align: left;
+    margin: auto;
 }
