@@ -37,7 +37,7 @@ oauth.register(
     client_id=settings.client_id,
     client_secret=settings.client_secret,
     client_kwargs={
-        'scope': 'openid',
+        'scope': 'membershio openid',
     }
 )
 
