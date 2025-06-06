@@ -34,6 +34,11 @@ body {
     margin: auto;
 }
 
+.last-updated {
+    margin-top: 20px;
+    padding: 10px 5px;
+}
+
 .explainer {
     width: 50vw;
     text-align: left;

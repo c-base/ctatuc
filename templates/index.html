@@ -10,6 +10,10 @@
     </div>
     {% endfor %}
 </div>
+<div class="last-updated">
+    Last sensor ping at {{ status.updated }} ({{ "%.0f"|format(seconds_ago) }} seconds ago).<br />
+    <small>You should see pings about every 10 seconds. If it's been longer than that without an update, the door sensor might have stopped responding.</small>
+</div>
 <p><a href="/logout/">Logout</a></p>
 <div class="explainer">
     <p>

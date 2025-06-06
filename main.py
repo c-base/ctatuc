@@ -116,11 +116,16 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def homepage(request: Request):
     user = request.session.get('user')
     if user:
+        if door_status['updated']:
+            seconds_ago = (datetime.now() - door_status['updated']).total_seconds()
+        else:
+            seconds_ago = -999.9
         context = {
             "data": json.dumps(user),
             "user": user,
             "request": request,
             "status": door_status,
+            "seconds_ago": seconds_ago,
         }
         return templates.TemplateResponse("index.html", context)
     return templates.TemplateResponse("index_login_required.html", {"request": request})
