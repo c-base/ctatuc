@@ -1,23 +1,17 @@
-[tool.poetry]
+[project]
 name = "ctatuc"
 version = "0.1.0"
-description = "A website showin the status of the main airlock of c-base"
-authors = ["Uwe Kamper <me@uwekamper.de>"]
-license = "MIT"
+description = "Add your description here"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-fastapi = "^0.103.1"
-uvicorn = "^0.23.2"
-authlib = "1.2.1"
-httpx = "^0.24.1"
-itsdangerous = "^2.1.2"
-pydantic-settings = "^2.0.3"
-jinja2 = "^3.1.2"
-aiomqtt = "^1.2.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.9"
+dependencies = [
+    "aiomqtt>=2.4.0",
+    "authlib>=1.6.0",
+    "fastapi>=0.115.12",
+    "httpx>=0.28.1",
+    "itsdangerous>=2.2.0",
+    "jinja2>=3.1.6",
+    "pydantic-settings>=2.9.1",
+    "python-dotenv>=1.1.0",
+    "uvicorn>=0.34.3",
+]
